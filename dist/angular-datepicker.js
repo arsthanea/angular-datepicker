@@ -897,8 +897,9 @@ Module.directive('dateTime', ['$compile', '$document', '$filter', 'dateTimeConfi
         if (position === 'absolute') {
           var pos = element[0].getBoundingClientRect();
           // Support IE8
+          var scrollTop = (window.pageYOffset !== undefined) ? window.pageYOffset : (document.documentElement || document.body.parentNode || document.body).scrollTop;
           var height = pos.height || element[0].offsetHeight;
-          picker.css({ top: (pos.top + height) + 'px', left: pos.left + 'px', display: 'block', position: position });
+          picker.css({ top: (pos.top + height + scrollTop) + 'px', left: pos.left + 'px', display: 'block', position: position });
           body.append(picker);
         } else {
           // relative
