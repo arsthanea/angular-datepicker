@@ -28,7 +28,7 @@ Module.constant('datePickerConfig', {
 Module.filter('mFormat', function () {
   return function (m, format, tz) {
     if (!(moment.isMoment(m))) {
-      if (m.length === 0) { return null; }
+      if (m === undefined || m.length === 0) { return null; }
       return moment(m).format(format);
     }
     return tz ? moment.tz(m, tz).format(format) : m.format(format);
