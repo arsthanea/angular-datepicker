@@ -739,6 +739,7 @@ Module.directive('dateTime', ['$compile', '$document', '$filter', 'dateTimeConfi
           eventIsForPicker = datePickerUtils.eventIsForPicker,
           dateChange = null,
           shownOnce = false,
+          locale = attrs.locale || 'en',
           template;
 
       if (index === -1) {
@@ -915,6 +916,7 @@ Module.directive('dateTime', ['$compile', '$document', '$filter', 'dateTimeConfi
         });
       }
 
+      moment.locale(locale);
       element.bind('focus click', showPicker);
       element.bind('blur', clear);
       getTemplate();
